@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        width: 100%;
+        min-height: 100vh;
+        height: fit-content;
+        background: linear-gradient(45deg,
+                hsl(231deg 29% 9%) 0%,
+                hsl(229deg 26% 8%) 11%,
+                hsl(233deg 22% 8%) 22%,
+                hsl(231deg 18% 8%) 33%,
+                hsl(230deg 16% 7%) 44%,
+                hsl(228deg 14% 7%) 56%,
+                hsl(220deg 9% 6%) 67%,
+                hsl(240deg 6% 6%) 78%,
+                hsl(180deg 3% 6%) 89%,
+                hsl(0deg 0% 5%) 100%);
+    }
+
+    .glow {
+        position: relative;
+        -webkit-box-shadow: 0px 0px 99px 37px rgba(0, 55, 255, 0.19);
+        -moz-box-shadow: 0px 0px 99px 37px rgba(0, 55, 255, 0.19);
+        box-shadow: 0px 0px 99px 37px rgba(0, 55, 255, 0.19);
+    }
+
+    .glow::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        color: white;
+        border-radius: 50px;
+        padding: 1.5px;
+        background: linear-gradient(45deg, rgba(0, 54, 255, 1) 0%, rgba(0, 162, 255, 1) 100%);
+        z-index: 0;
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        animation: animateSearchBg 2s ease-in-out infinite forwards;
+    }
+
+    button:not(:hover) {
+        background: rgb(153, 41, 234);
+        background: linear-gradient(30deg, rgba(153, 41, 234, 1) 0%, rgba(88, 8, 251, 1) 100%);
+    }
+
+    button:hover {
+        position: relative;
+        color: white;
+    }
+
+    button:hover::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        color: white;
+        border-radius: 50px;
+        padding: 1.5px;
+        background: linear-gradient(30deg, rgba(153, 41, 234, 1) 0%, rgba(88, 8, 251, 1) 100%);
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        animation: animateButtonBg .5s ease-in-out infinite forwards;
+    }
+
+    @keyframes animateButtonBg {
+        0% {
+            background: linear-gradient(30deg, rgba(153, 41, 234, 1) 0%, rgba(88, 8, 251, 1) 100%);
+        }
+
+        100% {
+            background: linear-gradient(-30deg, rgba(153, 41, 234, 1) 0%, rgba(88, 8, 251, 1) 100%);
+        }
+    }
+
+    @keyframes animateSearchBg {
+        0% {
+            background: linear-gradient(45deg, rgba(0, 54, 255, 1) 0%, rgba(0, 162, 255, 1) 100%);
+        }
+
+        100% {
+            background: linear-gradient(-45deg, rgba(0, 54, 255, 1) 0%, rgba(0, 162, 255, 1) 100%);
+        }
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::marker,
+::-webkit-details-marker {
+    display: none !important;
+}
+
+summary {
+    display: flex;
+}
+
+button {
+    cursor: pointer !important;
+    border: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+:focus-visible {
+    outline: 0;
+}
