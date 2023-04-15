@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+    html {
+        background: #0d0e0e;
+    }
+
     body {
         width: 100%;
         min-height: 100vh;
