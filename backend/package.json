@@ -1,0 +1,21 @@
+{
+  "name": "chartplotter-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22",
+    "shelljs": "^0.8.5"
+  },
+  "engines": {
+    "node": ">= 6.9.4",
+    "npm": ">= 4.4.0"
+  }
+}
