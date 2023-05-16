@@ -16,22 +16,19 @@ export function Index() {
     const [validQuery, setValidQuery] = useState<boolean>(true);
 
     const handleSubmit = (): void => {
-        setLoading((loading) => !loading);
-
         const submit = async (): Promise<void> => {
             const name = playerName.replaceAll(' ', '-').trim().toLowerCase();
             const response = await fetch(`${SERVER_URL}/${name}`);
             const data = await response.json();
 
             if(data.ok) {
-                setLoading((loading) => !loading);
-
+                setLoading(true);
                 const imageURL = `${FIREBASE_URL}/${data.fileName.replaceAll(" ", "-")}`;
-
                 const imageResponse = await fetch(imageURL);
-                const blob = await imageResponse.blob();
-
-                if(URL.createObjectURL(blob) === imageURL) {
+                if(imageResponse.ok) {
+                    const blob = await (imageResponse).blob();
+                    setLoading(false);
+                    setValidQuery(true);
                     setImage(
                         <img
                             src={URL.createObjectURL(blob)}
@@ -40,8 +37,9 @@ export function Index() {
                         />
                     );
                 }
-
+                
                 else {
+                    setLoading(false);
                     setValidQuery(false);
                 }
             }
